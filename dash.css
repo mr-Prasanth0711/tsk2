@@ -200,9 +200,10 @@
     margin-left: 100px;
     
   }
-  thead{
-    background: #27db99;
+  th{
+    background: #36c78f;
   }
+ 
   .btn1{
     width: 40px;
     height: 20px;
@@ -219,7 +220,7 @@
    margin-left: 100vh;
    border-radius: 10px;
   }
-  .form{
+  .container11{
     margin-left: 100vh;
   }
 .btn11{

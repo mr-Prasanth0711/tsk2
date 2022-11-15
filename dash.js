@@ -1,43 +1,3 @@
-// fetch("https://jsonplaceholder.typicode.com/users")
-
-// .then((apidata)=>{
-
-//  return apidata.json();
-
-// }).then((datas)=>{
-//   console.log(datas[0].username);
-
-//   let  table="";
-
-//   datas.map((values)=>{
-//     console.log("values",values);
-
-// table +=`<tr>
-
-// <td> ${values.id}</td>
-// <td> ${values.name}</td>
-// <td> ${values.username}</td>
-// <td> ${values.email}</td>
-// <td> ${values.address.street}</td>
-// <td> ${values.address.suite}</td>
-// <td> ${values.address.city}</td>
-// <td> ${values.address.zipcode}</td>
-// <td> ${values.address.geo.lat}</td>
-// <td> ${values.address.geo.lng}</td>
-// <td> ${values.phone}</td>
-// <td> ${values.website}</td>
-// <td> ${values.company.name}</td>
-// <td> ${values.company.catchPhrase}</td>
-// <td> <button class="btn1" type="button onclick="onedit(this)">Edit</button> <button class="btn2" type="button value="delete" onclick="ondel(this)">Delete</button></td>
-
-
-
-// </tr>`
-
-//   });
-//   document.getElementById("tablecontent").innerHTML=table;
-// })
-
 
 
 
@@ -78,7 +38,7 @@ xhttp.onload=function(){
         cell12.innerHTML=Arr[i].website;
         cell13.innerHTML=Arr[i].company.name;
         cell14.innerHTML=Arr[i].company.catchPhrase;
-        cell15.innerHTML='<button class="btn btn-success" onclick="edit(this)">Update</button>&nbsp&nbsp<button class="btn btn-danger" id="del" onclick="del(this)">Delete</button>';
+        cell15.innerHTML='<button class="btn1" onclick="edit(this)">Edit</button>&nbsp&nbsp<button class="btn2" id="del" onclick="dele(this)">Delete</button>';
     }
 }
 
@@ -89,29 +49,29 @@ xhttp.send();
 
 
 
- myFunction=() =>{
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("input1");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("tbl");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
+//  myFunction=() =>{
+//   var input, filter, table, tr, td, i, txtValue;
+//   input = document.getElementById("input1");
+//   filter = input.value.toUpperCase();
+//   table = document.getElementById("tbl");
+//   tr = table.getElementsByTagName("tr");
+//   for (i = 0; i < tr.length; i++) {
+//     td = tr[i].getElementsByTagName("td")[0];
+//     if (td) {
+//       txtValue = td.textContent || td.innerText;
+//       if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//         tr[i].style.display = "";
+//       } else {
+//         tr[i].style.display = "none";
+//       }
+//     }       
+//   }
+// }
 
 
 
 
-function edit(){
+ edit=(r)=>{
     
   row=r.parentNode.parentNode.rowIndex;
  var name=document.getElementById('tbl').rows[row].cells[1].innerHTML;
@@ -128,7 +88,9 @@ function edit(){
 }
 
 
-const save=()=>{
+
+
+const submit=()=>{
   
      var Name=document.getElementById('name').value;
      var uName=document.getElementById('uname').value;
@@ -139,7 +101,10 @@ const save=()=>{
      document.getElementById('tbl').rows[row].cells[2].innerHTML=uName;
      document.getElementById('tbl').rows[row].cells[3].innerHTML=mail;
      document.getElementById('tbl').rows[row].cells[10].innerHTML=Mobile;
-
+   
   }
 
-  
+  const dele=(k)=>{
+    var value=k.parentNode.parentNode.rowIndex;
+    document.getElementById('tbl').deleteRow(value);
+} 
